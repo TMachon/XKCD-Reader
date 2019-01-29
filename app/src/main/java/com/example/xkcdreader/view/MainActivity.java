@@ -1,7 +1,9 @@
-package com.example.xkcdreader;
+package com.example.xkcdreader.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.xkcdreader.R;
 
 public class MainActivity extends AppCompatActivity {
 
