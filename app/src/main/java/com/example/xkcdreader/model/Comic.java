@@ -1,74 +1,71 @@
 package com.example.xkcdreader.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Comic {
 
     // Variables
 
-    private String num;
+    @SerializedName("num")
+    @Expose
+    private int num;
+
+    @SerializedName("day")
+    @Expose
     private String day;
+
+    @SerializedName("month")
+    @Expose
     private String month;
+
+    @SerializedName("year")
+    @Expose
     private String year;
 
+    @SerializedName("title")
+    @Expose
     private String title;
+
+    @SerializedName("img")
+    @Expose
     private String img;
+
+    @SerializedName("alt")
+    @Expose
     private String alt;
 
     // Accessors
 
-    public String getNum() {
-        return num;
-    }
+    public int getNum() { return num; }
+    public void setNum(int num) { this.num = num; }
 
-    public void setNum(String num) {
-        this.num = num;
-    }
+    public String getDay() { return day; }
+    public void setDay(String day) { this.day = day; }
 
-    public String getDay() {
-        return day;
-    }
+    public String getMonth() { return month; }
+    public void setMonth(String month) { this.month = month; }
 
-    public void setDay(String day) {
-        this.day = day;
-    }
+    public String getYear() { return year; }
+    public void setYear(String year) { this.year = year; }
 
-    public String getMonth() {
-        return month;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public void setMonth(String month) {
-        this.month = month;
-    }
+    public String getImg() { return img; }
+    public void setImg(String img) { this.img = img; }
 
-    public String getYear() {
-        return year;
-    }
+    public String getAlt() { return alt; }
+    public void setAlt(String alt) { this.alt = alt; }
 
-    public void setYear(String year) {
-        this.year = year;
-    }
+    // To String
 
-    public String getTitle() {
-        return title;
+    @Override
+    public String toString() {
+        String str = "";
+        str += String.valueOf(getNum())+"_";
+        str += getDay()+"-"+getMonth()+"-"+getYear()+"_";
+        str += getTitle();
+        return str;
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getAlt() {
-        return alt;
-    }
-
-    public void setAlt(String alt) {
-        this.alt = alt;
-    }
-
 }

@@ -7,7 +7,12 @@ public class ComicsList {
     // Variables
 
     private ArrayList<Comic> listOfComics;
-    private int size;
+
+    // Constructor
+
+    public ComicsList(ArrayList<Comic> listOfComics) {
+        this.listOfComics = listOfComics;
+    }
 
     // Accessors
 
@@ -15,15 +20,7 @@ public class ComicsList {
         return listOfComics;
     }
 
-    public void setListOfComics(ArrayList<Comic> listOfComics) {
-        this.listOfComics = listOfComics;
-    }
-
     public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
+        return listOfComics.size();
     }
 }
