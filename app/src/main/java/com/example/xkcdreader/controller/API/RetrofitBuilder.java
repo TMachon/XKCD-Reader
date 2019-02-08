@@ -14,11 +14,12 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 import okhttp3.ConnectionSpec;
+import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.TlsVersion;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
+
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.Retrofit;
 
 public class RetrofitBuilder {
 
@@ -51,13 +52,11 @@ public class RetrofitBuilder {
     private static OkHttpClient.Builder enableTLS(OkHttpClient.Builder client) {
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 22) {
             try {
-                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(
-                        TrustManagerFactory.getDefaultAlgorithm());
+                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
                 trustManagerFactory.init((KeyStore) null);
                 TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
                 if (trustManagers.length != 1 || !(trustManagers[0] instanceof X509TrustManager)) {
-                    throw new IllegalStateException("Unexpected default trust managers:"
-                            + Arrays.toString(trustManagers));
+                    throw new IllegalStateException("Unexpected default trust managers:" + Arrays.toString(trustManagers));
                 }
                 X509TrustManager trustManager = (X509TrustManager) trustManagers[0];
 
@@ -75,7 +74,8 @@ public class RetrofitBuilder {
                 specs.add(ConnectionSpec.CLEARTEXT);
 
                 client.connectionSpecs(specs);
-            } catch (Exception exc) {
+            }
+            catch (Exception exc) {
                 Log.e("OkHttpTLSCompat", "Error while setting TLS 1.2", exc);
             }
         }
@@ -83,31 +83,3 @@ public class RetrofitBuilder {
         return client;
     }
 }
-
-/**
-//OLD
-
-package com.example.xkcdreader.controller.API;
-
-import retrofit2.*;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-public abstract class RetrofitBuilder {
-
-    private static APIManagerInterface service;
-    private static final String BASE_URL = "https://xkcd.com/";
-
-    public static APIManagerInterface getService() {
-        if (service == null) {
-            Retrofit retrofit = new retrofit2.Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            service = retrofit.create(APIManagerInterface.class);
-        }
-        return service;
-    }
-
-}
-
-/**/
