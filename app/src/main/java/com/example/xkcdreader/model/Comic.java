@@ -51,10 +51,18 @@ public class Comic {
 
     @Override
     public String toString() {
-        String str = "";
-        str += String.valueOf(getNum())+"_";
-        str += getDay()+"-"+getMonth()+"-"+getYear()+"_";
-        str += "'"+getTitle()+"'";
-        return str;
+        String str = String.valueOf(getNum())+"-";
+        str += getTitle()+"-";
+        str += getDay()+"/"+getMonth()+"/"+getYear()+"-";
+        str += getImg()+"-"+getAlt();
+        return str.replace(' ', '_');
+    }
+
+    public String formatPrimary() {
+        return getTitle();
+    }
+
+    public String formatSecondary() {
+        return getDay()+"/"+getMonth()+"/"+getYear() + " " + "#"+String.valueOf(getNum());
     }
 }
