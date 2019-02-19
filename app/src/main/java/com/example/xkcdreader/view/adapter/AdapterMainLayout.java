@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.xkcdreader.R;
+import com.example.xkcdreader.util.ItemClickSupport;
 
 public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdreader.view.adapter.AdapterMainLayout.ViewHolder> {
 
@@ -26,7 +29,7 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         // Complex data items may need more than one view per item, and
         // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
+
         public TextView txtHeader;
         public TextView txtFooter;
         public View layout;
@@ -70,6 +73,15 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         View v = inflater.inflate(R.layout.row_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
+        // manage clicks
+        ItemClickSupport.addTo((RecyclerView) v, R.layout.row_layout).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                //TODO IMPORTANT put here the code for when a line is clicked
+                // https://openclassrooms.com/fr/courses/4568576-recuperez-et-affichez-des-donnees-distantes/4893791-interagissez-avec-la-recyclerview
+            }
+        });
+
         return vh;
     }
 
