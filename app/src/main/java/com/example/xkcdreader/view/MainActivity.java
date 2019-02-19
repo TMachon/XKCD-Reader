@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MainController controller;
 
-    private ArrayList<Comic> listOfComics; //might be useless, the future will tell
+    private ArrayList<Comic> listOfComics; //TODO might be useless, the future will tell
 
     public RecyclerView recyclerView;
     public AdapterMainLayout rvAdapter;
@@ -50,9 +50,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void addComic(Comic addedComic) {
         listOfComics.add(addedComic);
-    }
-
-    public int getNbComics() {
-        return listOfComics.size();
-    }
+    } //TODO might be useless
 }

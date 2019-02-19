@@ -14,12 +14,17 @@ import com.example.xkcdreader.R;
 
 public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdreader.view.adapter.AdapterMainLayout.ViewHolder> {
 
+    // Attributes
+
     private List<String> firstLineDataSet;
     private List<String> secondLineDataSet;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+
+    // Inner Class
+
+        // Provide a reference to the views for each data item
+        // Complex data items may need more than one view per item, and
+        // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtHeader;
@@ -34,11 +39,16 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
+
+    // Constructor
+
     public AdapterMainLayout() {
         this.firstLineDataSet = new ArrayList<>();
         this.secondLineDataSet = new ArrayList<>();
     }
+
+
+    // Misc Methods
 
     public void add(String firstLine, String secondLine) {
         firstLineDataSet.add(firstLine);
@@ -52,7 +62,7 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         notifyItemRemoved(position);
     }
 
-    // Create new views (invoked by the layout manager)
+    //create new views (invoked by the layout manager)
     @Override
     public com.example.xkcdreader.view.adapter.AdapterMainLayout.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
@@ -63,7 +73,7 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    //replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
@@ -80,7 +90,7 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         holder.txtFooter.setText(secondLine);
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    //return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return firstLineDataSet.size();

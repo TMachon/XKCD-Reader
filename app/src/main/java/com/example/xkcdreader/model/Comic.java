@@ -59,10 +59,10 @@ public class Comic {
     }
 
     public String formatPrimary() {
-        return String.valueOf(getNum())+" - "+getTitle();
+        return getTitle();
     }
 
     public String formatSecondary() {
-        return getDay()+"/"+getMonth()+"/"+getYear();
+        return getDay()+"/"+getMonth()+"/"+getYear() + " " + "#"+String.valueOf(getNum());
     }
 }
