@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
     // Attributes
 
     private MainController controller;
-
-    private ArrayList<Comic> listOfComics; //TODO might be useless, the future will tell
-
     public RecyclerView recyclerView;
     public AdapterMainLayout rvAdapter;
     public RecyclerView.LayoutManager rvLayoutManager;
+
+    private ArrayList<Comic> listOfComics;
+
 
     // Methods
 
@@ -41,14 +41,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         rvLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(rvLayoutManager);
-        rvAdapter = new AdapterMainLayout();
+        rvAdapter = new AdapterMainLayout(listOfComics);
         recyclerView.setAdapter(rvAdapter);
 
         //creating controller
         controller = new MainController(this);
     }
 
-    public void addComic(Comic addedComic) {
+    public void addComic(Comic addedComic)
+    {
         listOfComics.add(addedComic);
-    } //TODO might be useless
+    }
 }

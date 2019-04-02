@@ -3,7 +3,11 @@ package com.example.xkcdreader.view.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,11 +15,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.xkcdreader.R;
+import com.example.xkcdreader.model.Comic;
+import com.example.xkcdreader.util.ItemClickSupport;
+import com.example.xkcdreader.view.ComicActivity;
 
 public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdreader.view.adapter.AdapterMainLayout.ViewHolder> {
 
     // Attributes
-
+    private ArrayList<Comic> comics;
     private List<String> firstLineDataSet;
     private List<String> secondLineDataSet;
 
@@ -26,7 +33,7 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         // Complex data items may need more than one view per item, and
         // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
+
         public TextView txtHeader;
         public TextView txtFooter;
         public View layout;
@@ -42,7 +49,8 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
 
     // Constructor
 
-    public AdapterMainLayout() {
+    public AdapterMainLayout(ArrayList<Comic> comicsList) {
+        this.comics = comicsList;
         this.firstLineDataSet = new ArrayList<>();
         this.secondLineDataSet = new ArrayList<>();
     }
@@ -81,10 +89,13 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         final String firstLine = firstLineDataSet.get(position);
         final String secondLine = secondLineDataSet.get(position);
         holder.txtHeader.setText(firstLine);
-        holder.txtHeader.setOnClickListener(new OnClickListener() {
+        holder.itemView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(position);
+                Context content = v.getContext();
+                Intent intent = new Intent(content, ComicActivity.class);
+                intent.putExtra("URL", comics.get(position).getImg());
+                content.startActivity(intent);
             }
         });
         holder.txtFooter.setText(secondLine);
