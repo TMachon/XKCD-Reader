@@ -1,5 +1,7 @@
 package com.example.xkcdreader.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,14 +18,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
     // Attributes
 
     private MainController controller;
     public RecyclerView recyclerView;
     public AdapterMainLayout rvAdapter;
     public RecyclerView.LayoutManager rvLayoutManager;
-
     private ArrayList<Comic> listOfComics;
+    private boolean crashed;
 
 
     // Methods
@@ -35,6 +38,21 @@ public class MainActivity extends AppCompatActivity {
 
         //initializing attributes
         listOfComics = new ArrayList<>();
+        crashed = false;
+
+        setup();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (crashed) {
+            crashed = false;
+            setup();
+        }
+    }
+
+    private void setup() {
 
         //managing view
         recyclerView = findViewById(R.id.my_recycler_view);
@@ -48,8 +66,13 @@ public class MainActivity extends AppCompatActivity {
         controller = new MainController(this);
     }
 
-    public void addComic(Comic addedComic)
-    {
+    public void addComic(Comic addedComic) {
         listOfComics.add(addedComic);
+    }
+
+    public void connectionFailed() {
+        Intent intent = new Intent(this, ErrorActivity.class);
+        this.startActivity(intent);
+        crashed = true;
     }
 }
