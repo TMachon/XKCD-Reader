@@ -26,7 +26,7 @@ public class MainController {
                 if (response.isSuccessful()) {
                     Comic currentComic = response.body();
                     assert currentComic != null;
-                    latestComicId = Integer.valueOf(currentComic.getNum());
+                    latestComicId = currentComic.getNum();
 
                     for (int i = latestComicId; i > 0; i--) {
                         RetrofitBuilder.getService().comicById(i).enqueue(new Callback<Comic>() {

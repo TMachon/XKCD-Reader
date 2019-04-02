@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 
 import com.example.xkcdreader.R;
 import com.example.xkcdreader.model.Comic;
-import com.example.xkcdreader.util.ItemClickSupport;
+
 import com.example.xkcdreader.view.ComicActivity;
 
 public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdreader.view.adapter.AdapterMainLayout.ViewHolder> {
