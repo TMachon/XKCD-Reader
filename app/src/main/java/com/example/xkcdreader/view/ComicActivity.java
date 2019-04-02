@@ -4,13 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.xkcdreader.R;
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.module.AppGlideModule;
-import com.example.xkcdreader.controller.ComicController;
 
 public class ComicActivity extends AppCompatActivity {
 
@@ -29,11 +26,18 @@ public class ComicActivity extends AppCompatActivity {
         setImage(url);
     }
 
-    public void setImage(String url) {
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    private void setImage(String url) {
         Glide.with(this)
                 .load(url)
+                .apply(new RequestOptions()
+                .placeholder(R.mipmap.ic_launcher)
+                .fitCenter())
                 .into(iv);
-        TextView tv = findViewById(R.id.COMIC);
-        tv.setText(url);
     }
 }

@@ -1,5 +1,7 @@
 package com.example.xkcdreader.controller;
 
+import android.widget.Toast;
+
 import com.example.xkcdreader.controller.API.RetrofitBuilder;
 import com.example.xkcdreader.model.*;
 import com.example.xkcdreader.view.MainActivity;
@@ -37,29 +39,24 @@ public class MainController {
                                     activity.rvAdapter.add(pointedComic.formatPrimary(), pointedComic.formatSecondary());
 
                                 } else {
-                                    // TODO
+                                    Toast.makeText(activity, "Error loading a comic", Toast.LENGTH_LONG).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<Comic> call, Throwable t) {
-                                //TODO
+                                Toast.makeText(activity, "Error loading a comic", Toast.LENGTH_LONG).show();
                             }
                         });
                     }
-
-
-
                 } else {
-                    latestComicId = -1;
-                    // TODO
+                    activity.connectionFailed();
                 }
             }
 
             @Override
             public void onFailure(Call<Comic> call, Throwable t) {
-                latestComicId = -2;
-                //TODO
+                activity.connectionFailed();
             }
         });
     }
