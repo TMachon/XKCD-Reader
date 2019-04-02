@@ -3,6 +3,8 @@ package com.example.xkcdreader.view.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -13,12 +15,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.xkcdreader.R;
+import com.example.xkcdreader.model.Comic;
 import com.example.xkcdreader.util.ItemClickSupport;
+import com.example.xkcdreader.view.ComicActivity;
 
 public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdreader.view.adapter.AdapterMainLayout.ViewHolder> {
 
     // Attributes
-
+    private ArrayList<Comic> comics;
     private List<String> firstLineDataSet;
     private List<String> secondLineDataSet;
 
@@ -45,7 +49,8 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
 
     // Constructor
 
-    public AdapterMainLayout() {
+    public AdapterMainLayout(ArrayList<Comic> comicsList) {
+        this.comics = comicsList;
         this.firstLineDataSet = new ArrayList<>();
         this.secondLineDataSet = new ArrayList<>();
     }
@@ -73,15 +78,6 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         View v = inflater.inflate(R.layout.row_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
-        // manage clicks
-        ItemClickSupport.addTo((RecyclerView) v, R.layout.row_layout).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                //TODO IMPORTANT put here the code for when a line is clicked
-                // https://openclassrooms.com/fr/courses/4568576-recuperez-et-affichez-des-donnees-distantes/4893791-interagissez-avec-la-recyclerview
-            }
-        });
-
         return vh;
     }
 
@@ -93,10 +89,13 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
         final String firstLine = firstLineDataSet.get(position);
         final String secondLine = secondLineDataSet.get(position);
         holder.txtHeader.setText(firstLine);
-        holder.txtHeader.setOnClickListener(new OnClickListener() {
+        holder.itemView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(position);
+                Context content = v.getContext();
+                Intent intent = new Intent(content, ComicActivity.class);
+                intent.putExtra("ID", comics.get(position).getNum());
+                content.startActivity(intent);
             }
         });
         holder.txtFooter.setText(secondLine);

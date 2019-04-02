@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //initializing attributes
-        listOfComics = new ArrayList<>();
+        listOfComics = new ArrayList<>(); //TODO remove?
 
         //managing view
         recyclerView = findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
         rvLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(rvLayoutManager);
-        rvAdapter = new AdapterMainLayout();
+        rvAdapter = new AdapterMainLayout(listOfComics);
         recyclerView.setAdapter(rvAdapter);
 
         //creating controller
