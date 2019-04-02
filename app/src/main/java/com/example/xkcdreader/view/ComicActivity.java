@@ -18,11 +18,9 @@ public class ComicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comic);
 
-        /**/
-        iv = (ImageView) findViewById(R.id.imageViewComic);
+        iv = findViewById(R.id.imageViewComic);
         Intent intent = getIntent();
         String url = intent.getStringExtra("URL");
-        /**/
         setImage(url);
     }
 
