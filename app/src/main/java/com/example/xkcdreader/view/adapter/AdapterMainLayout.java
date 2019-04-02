@@ -94,7 +94,7 @@ public class AdapterMainLayout extends RecyclerView.Adapter<com.example.xkcdread
             public void onClick(View v) {
                 Context content = v.getContext();
                 Intent intent = new Intent(content, ComicActivity.class);
-                intent.putExtra("ID", comics.get(position).getNum());
+                intent.putExtra("URL", comics.get(position).getImg());
                 content.startActivity(intent);
             }
         });

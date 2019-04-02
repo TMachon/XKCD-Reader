@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public AdapterMainLayout rvAdapter;
     public RecyclerView.LayoutManager rvLayoutManager;
 
-    private ArrayList<Comic> listOfComics; //TODO might be useless, the future will tell
+    private ArrayList<Comic> listOfComics;
 
 
     // Methods
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //initializing attributes
-        listOfComics = new ArrayList<>(); //TODO remove?
+        listOfComics = new ArrayList<>();
 
         //managing view
         recyclerView = findViewById(R.id.my_recycler_view);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         controller = new MainController(this);
     }
 
-    public void addComic(Comic addedComic) //TODO might be useless
+    public void addComic(Comic addedComic)
     {
         listOfComics.add(addedComic);
     }
