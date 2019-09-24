@@ -2,11 +2,7 @@
 # XKCD Reader v1.1
 
 ## TODO
-*- Mise en cache*
-*- Refonte graphique*
-*- Recherche par mot-clefs*
-*- Options de tri*
-
+<i>- Mise en cache<br>- Refonte graphique<br>- Recherche par mot-clefs<br>- Options de tri </i>
 ## Présentation
 XKCD Reader est une application Android codée en JAVA permettant d'afficher les web-comics [XKCD](https://xkcd.com/ "website_link"). Elle fait appel à l'API développée par l'auteur des web-comics lui-même.
 
