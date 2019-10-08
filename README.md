@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 
 # XKCD Reader v1.1
 
 ## TODO
 <i>- Mise en cache<br>- Refonte graphique<br>- Recherche par mot-clefs<br>- Options de tri </i>
+=======
+# XKCD Reader v1.0
+
+>>>>>>> 19545aece9aecdc70a9ac8e859861e9bb09f625c
 ## Présentation
 XKCD Reader est une application Android codée en JAVA permettant d'afficher les web-comics [XKCD](https://xkcd.com/ "website_link"). Elle fait appel à l'API développée par l'auteur des web-comics lui-même.
 
@@ -49,7 +54,11 @@ XKCD Reader est une application Android codée en JAVA permettant d'afficher les
 | |/
 | *   999b1b0 - (origin/develop) Merge pull request #4 from TMachon/feature/FinishingTouches
 |/
+<<<<<<< HEAD
 *   1abbd4b - (HEAD -> master, origin/master) Merge pull request #5 from TMachon/develop
+=======
+*   1abbd4b - (HEAD -> master, origin/master) Merge pull request #5 from TMachon/develop 
+>>>>>>> 19545aece9aecdc70a9ac8e859861e9bb09f625c
 ```
 
 ## Screenshots
@@ -64,6 +73,7 @@ Affichage d'une erreur en cas d'absence d'internet :<br>
 
 *Théo Machon 2018* <br>
 *Projet réalisé dans le cadre du cours de Programmation Mobile 3A ESIEA* <br>
+<<<<<<< HEAD
 *Dernière mise à jour du <span>README.md</span> le 02/04/2019* <br># XKCD Reader v1.0
 
 ## Présentation
@@ -128,3 +138,6 @@ Affichage d'une erreur en cas d'absence d'internet :<br>
 *Théo Machon 2018-2019* <br>
 *Projet réalisé dans le cadre des cours de Programmation Mobile 3A & 4A ESIEA* <br>
 *Dernière mise à jour du <span>README.md</span> le 24/09/2019* <br>
+=======
+*Dernière mise à jour du <span>README.md</span> le 02/04/2019* <br>
+>>>>>>> 19545aece9aecdc70a9ac8e859861e9bb09f625c
